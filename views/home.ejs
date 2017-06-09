@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="twiLu">
+  <head>
+    <%- include('header'); %>
+    <title>twitter-lucene | Home</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap-select.min.css">
+    <script type="text/javascript" src="javascripts/lib/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="javascripts/home.js"></script>
+  </head>
+  <body ng-app="twiLu" ng-controller="homeController">
+    <div id="search-options" class="container text-center" align="center">
+      <h3 class="text-center">Query Twitter Lucene Data</h3>
+      <div class="row" >
+        <div class="col-md-2">
+          <!-- <label for="user-name">Username</label> -->
+          <input class="form-control" id="user-name" ng-model="userName" type="text"
+          onkeyup = "if(event.keyCode == 13) document.getElementById('srch-btn').click();" placeholder="username:" />
+        </div>
+        <div class="col-md-6">
+          <!-- <label for="tweet-text">Tweet</label> -->
+          <input class="form-control" id="tweet-text" ng-model="tweetText" type="text"
+           onkeyup = "if(event.keyCode == 13) document.getElementById('srch-btn').click();"
+           placeholder="text: (Enclose with double qoutes for strict search)" />
+        </div>
+        <div class="col-md-2">
+          <input class="form-control" id="tweet-count" ng-model="tweetCount" type="text"
+          onkeyup = "if(event.keyCode == 13) document.getElementById('srch-btn').click();" placeholder="Max no of tweets" />
+        </div>
+        <div class="col-md-1">
+          <!--<button id="srch-btn" type="submit" class="btn btn-success" ng-click="search();" ><i class="fa fa-search" aria-hidden="true"></i> </button>-->
+          <button id="srch-btn" type="submit" class="btn btn-success" ng-click="search();" >Search</button>
+        </div>
+      </div>
+    </div>
+    <h6 id="search-msg" class="text-center">{{ searchMsg }}</h6>
+    <div id="search-results" class="container hidden">
+      <div class="row">
+        <div class="col-md-25">
+          <table class="table table-striped table-hover table-condensed table-responsive">
+            <thead>
+              <!--<th>ID</th>-->
+              <th>Username</th>
+              <th>Date</th>
+              <th>Tweet</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="r in results">
+                <!--<td>{{ r.id }}</td>-->
+                <td class="no-wrap">{{ r.username }}</td>
+                <td class="no-wrap">{{ r.date }}</td>
+                <td class="word-wrap">{{ r.text }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
