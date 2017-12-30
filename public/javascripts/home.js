@@ -14,11 +14,11 @@ angular.module('twiLu').controller('homeController', function ($scope, $http, $t
     var terms = ($scope.tweetText === undefined)?'':String($scope.tweetText).trim();
     var count = ($scope.tweetCount === undefined)?'':String($scope.tweetCount).trim().toLowerCase();
     query += (username!='')?('username:'+username + ((terms!='')?' AND text:'+terms :''))
-      :(terms!='') ? 'text:'+terms :'text:valium';
+      :(terms!='') ? '题名:'+terms :'text:valium';
     count = (count==='all'||count==='*')?'all'
       :(count!=''&&Number.isInteger(parseInt(count)))?parseInt(count):500;
-    var searchMessage = "Querying " + count + " documents for '" + query 
-      +"'. It can take a while. "; 
+    var searchMessage = "Querying " + count + " documents for '" + query
+      +"'. It can take a while. ";
     $scope.searchMsg = searchMessage;
     // var uriparams = encodeURIComponent('query='+query.trim()+'&count='+count);
     var uriparams = 'query='+query.trim()+'&count='+count;

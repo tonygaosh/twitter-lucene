@@ -26,6 +26,10 @@ router.get('/search', function(req, res) {
       var query = String(req.query.query.trim());
       var count = String(req.query.count.trim());
       var uri = API_URI+'search?query='+query+'&count='+count;
+      /*
+       * Newly added
+       */
+      uri = encodeURI(uri)
       console.log('Route: The uri is \''+uri+'\'');
       request.get(uri, function (error, response, body) {
         if (response && response.statusCode === 200) {
