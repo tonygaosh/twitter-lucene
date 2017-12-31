@@ -41,6 +41,10 @@ label {
   display: block;
 }
 
+table tr {
+    height: 30px;
+}
+
 .row {
   margin-top: 1rem;
 }
@@ -60,6 +64,12 @@ label {
 .word-wrap-b {
   word-break: break-all;
   font-weight: bolder;
+}
+
+.word-wrap-b-i {
+  word-break: break-all;
+  font-weight: bolder;
+  font-style: italic;
 }
 
 .word-wrap-no {

@@ -2,7 +2,7 @@ angular.module('twiLu').controller('homeController', function ($scope, $http, $t
 
   $scope.username = "";
   $scope.date = null;
-  $scope.tweet = "valium";
+  $scope.tweet = "";
   $scope.results = [];
 
   function setup() {
@@ -13,8 +13,14 @@ angular.module('twiLu').controller('homeController', function ($scope, $http, $t
     var username = ($scope.userName === undefined)?'':String($scope.userName).trim();
     var terms = ($scope.tweetText === undefined)?'':String($scope.tweetText).trim();
     var count = ($scope.tweetCount === undefined)?'':String($scope.tweetCount).trim().toLowerCase();
-    query += (username!='')?('作者:"'+username + ((terms!='')?'" AND 题名:'+terms :'"'))
-      :(terms!='') ? '题名:'+terms :'题名:计算机';
+    var institute = ($scope.instituteName === undefined)?'':String($scope.instituteName).trim();
+    var publisher = ($scope.publisherName === undefined)?'':String($scope.publisherName).trim();
+
+    query += (terms!='') ? '(题名:'+terms+'OR 摘要:'+terms+')' : '(题名:计算机 OR 摘要:计算机)';
+    query += (username!='') ? ((query!='') ? (' AND (作者:"'+username+'")') : ('(作者:"'+username+'")')) : '';
+    query += (institute!='') ? ((query!='') ? (' AND (单位:'+institute+')') : ('(单位:'+institute+')')) : '';
+    query += (publisher!='') ? ((query!='') ? (' AND (来源:'+publisher+')') : ('(来源:'+publisher+')')) : '';
+
     count = (count==='all'||count==='*')?'all'
       :(count!=''&&Number.isInteger(parseInt(count)))?parseInt(count):500;
     var searchMessage = "Querying " + count + " documents for '" + query
