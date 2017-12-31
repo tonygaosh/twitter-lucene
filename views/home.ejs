@@ -44,13 +44,14 @@
               <!-- <th>摘要</th> -->
             </thead>
             <tbody ng-repeat="r in results">
+              <!-- This is the conent  -->
               <tr>
                 <!--<td>{{ r.id }}</td>-->
-                <td class="word-wrap-b">{{ r['作者'] }}</td>
-                <td class="word-wrap-b">{{ r['题名'] }}</td>
+                <td class="word-wrap-b" ng-bind-html="r['作者'] | trustHtml"></td>
+                <td class="word-wrap-b" ng-bind-html="r['题名'] | trustHtml"></td>
               </tr>
               <tr>
-                <td colspan="2" class="word-wrap" ng-show="r['摘要']!==undefined">　　{{ r['摘要'] }}</td>
+                <td colspan="2" class="word-wrap" ng-show="r['摘要']!==undefined">　　<span ng-bind-html="r['摘要'] | trustHtml"></span></td>
                 <td colspan="2" class="word-wrap-no" ng-show="r['摘要']==undefined">　　摘要不可用。</td>
               </tr>
             </tbody>

@@ -42,3 +42,9 @@ angular.module('twiLu').controller('homeController', function ($scope, $http, $t
   }
 
 });
+
+angular.module("twiLu").filter('trustHtml', function ($sce) {
+    return function (input) {
+        return $sce.trustAsHtml(input);
+    }
+});
