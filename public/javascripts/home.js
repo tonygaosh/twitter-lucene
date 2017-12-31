@@ -13,8 +13,8 @@ angular.module('twiLu').controller('homeController', function ($scope, $http, $t
     var username = ($scope.userName === undefined)?'':String($scope.userName).trim();
     var terms = ($scope.tweetText === undefined)?'':String($scope.tweetText).trim();
     var count = ($scope.tweetCount === undefined)?'':String($scope.tweetCount).trim().toLowerCase();
-    query += (username!='')?('username:'+username + ((terms!='')?' AND text:'+terms :''))
-      :(terms!='') ? '题名:'+terms :'text:valium';
+    query += (username!='')?('作者:"'+username + ((terms!='')?'" AND 题名:'+terms :'"'))
+      :(terms!='') ? '题名:'+terms :'题名:计算机';
     count = (count==='all'||count==='*')?'all'
       :(count!=''&&Number.isInteger(parseInt(count)))?parseInt(count):500;
     var searchMessage = "Querying " + count + " documents for '" + query

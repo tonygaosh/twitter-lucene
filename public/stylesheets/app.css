@@ -57,6 +57,18 @@ label {
   word-break: break-all;
 }
 
+.word-wrap-b {
+  word-break: break-all;
+  font-weight: bolder;
+}
+
+.word-wrap-no {
+  word-break: break-all;
+  font-weight: bolder;
+  color: gray;
+  font-style: italic;
+}
+
 .no-wrap {
   white-space: nowrap;
 }
